@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2? family= Lato & display=swap');
+
+*{
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+/* "*" es el selector universal en este caso aplica el estilo a todo*/
+
+body{
+    background-color: darkslategray;
+}
+header{
+    background-color: black;
+}
+h1{
+    color:gray;
+    /* background-color: aqua; */
+    text-align: center;
+    font-size: 3em;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-family: 'Lato', sans-serif;   */
+    font-family: cursive;
+    letter-spacing: 0.5em;
+    word-spacing: 1em;
+}
+
+nav{
+    background-color: gray;
+}
+
+
+section{
+    background-color: cornflowerblue;
+    width: 70%;
+}
+
+aside{
+    background-color: deeppink;
+    width: 30%;
+}
+
+footer{
+    background-color: yellow;
+}
+
+/* Uso de flexbox */
+ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+li{
+    list-style-type: none;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+main{
+    display: flex;
+}
