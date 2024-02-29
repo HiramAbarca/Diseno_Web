@@ -1,0 +1,69 @@
+CREATE DATABASE transporte;
+
+USE transporte;
+
+CREATE TABLE cliente(
+  codigo_cliente INT PRIMARY KEY,
+  nombre_clientes VARCHAR(15) NOT NULL,
+  apellido_cliente VARCHAR(15),
+  fecha_nac_cliente CHAR(10),
+  direccion_cliente VARCHAR(200) NOT NULL
+  );
+    
+CREATE TABLE proveedor(
+  NIT_proveedor INT PRIMARY KEY,
+  nombre_proveedor VARCHAR(15) NOT NULL,
+  direccion_proveedor VARCHAR(200)
+  );
+  
+CREATE TABLE producto(
+  clave_producto INT PRIMARY KEY,
+  nombre_producto VARCHAR(20) NOT NULL,
+  precio_producto DOUBLE UNSIGNED NOT NULL,
+  /*DOUBLE es para capturar decimales*/
+  
+  /*Capturamo s la clave foranea*/
+  NIT_proveedor1 INT, 
+  /*Vínculo con la tabla que tiene relacion*/
+  FOREIGN KEY(NIT_proveedor1) REFERENCES proveedor(NIT_proveedor)
+  );
+  
+/*Al final va la tabla generada por la relacion N:M*/
+
+CREATE TABLE nota(
+  codigo_cliente1 INT,
+  clave_producto1 INT,
+  FOREIGN KEY(codigo_cliente1) REFERENCES cliente(codigo_cliente),
+  FOREIGN KEY(clave_producto1) REFERENCES producto(clave_producto)
+  );
+
+/*Eliminacion de una base de datos permanentemente con DROP DATABASE*/
+/*DROP DATABASE transporte;*/
+
+/*Eliminacion de una tabla en especifico*/
+/*DROP TABLE cliente;*/
+
+/*Modificacion de estructura*/
+/*Necesitamos del cliente su apellido paterno y apellido materno*/
+/*Primero se debe eliminar la columna apellido_cliente VARCHAR(15)*/
+ALTER TABLE cliente
+DROP COLUMN apellido_cliente;
+
+/*Agrego la columna apellido_paterno*/
+ALTER TABLE cliente
+ADD apellido_paterno_cliente VARCHAR(20);
+
+/*Agrego la columna apellido_materno*/
+ALTER TABLE cliente
+ADD apellido_materno_cliente VARCHAR(20);
+
+/*Modificar el tamaño de la direccion_cliente*/
+ALTER TABLE cliente
+CHANGE direccion_cliente direccion_cliente VARCHAR(500);
+
+/*Modificar el atributo nombre_clientes a nombre_cliente*/
+ALTER TABLE cliente
+CHANGE nombre_clientes nombre_cliente VARCHAR( 20);
+
+
+https://www.db-fiddle.com/f/f59nL2SeK4avUDdda6TLqr/0
